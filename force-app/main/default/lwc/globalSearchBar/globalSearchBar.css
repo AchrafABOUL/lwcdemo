@@ -1,0 +1,22 @@
+.searchBarLayout{
+    margin-left: -12px !important;
+    margin-right: -12px !important;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-color : rebeccapurple;
+    background : white;
+    margin-top : -12px;
+}
+
+.searchFiltersSection{
+    position: absolute;
+    width: inherit !important;
+    /* margin-top: -13px; */
+}
+.noRadius{
+    border-radius: unset;
+    
+}
+.slds-input{
+    border-radius: unset !important;
+}

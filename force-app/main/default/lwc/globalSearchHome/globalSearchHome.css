@@ -1,0 +1,12 @@
+.searchResultsLayout{
+    margin-left: -12px !important;
+    height: 100% !important;
+      
+}
+.searchResults{
+        width: 90% !important;
+}
+.customContainer{
+    height: 91%;
+    margin-top : -12px;
+}
