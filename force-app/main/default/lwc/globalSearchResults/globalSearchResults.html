@@ -1,48 +1,13 @@
 <template>
-    <template for:each={shownResults} for:item='result'>
-        <div key={result.apiName} class="slds-is-relative slds-card slds-m-top_small">
-            <div class="resultsItem slds-col slds-no-flex">
-                <div class="searchResultsGridHeader slds-grid slds-grid--vertical-align-center slds-p-around_small">
-                    <div class="leftContent slds-col slds-wrap slds-text-body--small slds-text-color--weak">
-                        <h2 class="slds-m-bottom--xx-small">
-                            <a class="slds-page-header__title slds-text-color--default slds-show--inline-block uiOutputURL"
-                                href="javascript:void(0);" dir="ltr" title="">{result.title}</a>
-                        </h2>
-                    </div>
-                    <div if:true={result.showViewMore} class="rightContent slds-col slds-no-flex">
-                        <a href="javascript:void(0)" dir="ltr" title="View more Projects search results"
-                            onclick={handleViewMore} data-object={result.apiName} data-title={result.title}>
-                            <div class="viewMore">
-                                <span class="view-all-label">View More
-                                    <span class="assistiveText">{result.title}</span>
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <template if:true={result.error}>
-                <div style="text-align: center">Error</div>
-            </template>
-            <template if:false={result.error}>
-
-                <template if:true={result.showSpinner}>
-                    <div role="status" class="slds-spinner slds-spinner_small">
-                        <span class="slds-assistive-text">Loading</span>
-                        <div class="slds-spinner__dot-a"></div>
-                        <div class="slds-spinner__dot-b"></div>
-                    </div>
-                    <!-- <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner> -->
-                </template>
-
-
-
-                <template if:false={result.showSpinner}>
-                    <lightning-datatable key-field="id" data={result.data} columns={result.columns}
-                        hide-checkbox-column>
-                    </lightning-datatable>
-                </template>
-            </template>
+    <div class="slds-is-relative slds-card slds-m-around_small">
+        <div class="resultsItem slds-col slds-no-flex">
+            <h2 class="slds-m-bottom--xx-small">
+                <a class="slds-page-header__title slds-text-color--default slds-show--inline-block uiOutputURL"
+                    href="javascript:void(0);" dir="ltr" title="">Account</a>
+            </h2>
         </div>
-    </template>
+        <lightning-datatable key-field="id" data={results} columns={columns} hide-checkbox-column>
+        </lightning-datatable>
+
+    </div>
 </template>

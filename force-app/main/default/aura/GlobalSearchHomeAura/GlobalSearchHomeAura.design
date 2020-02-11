@@ -1,3 +1,0 @@
-<design:component >
-        <design:attribute name="developerName" label="Dashboard Api Name" default=""/>
-</design:component>

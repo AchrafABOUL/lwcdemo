@@ -1,31 +1,12 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes">
-    <aura:attribute name="showDashboard" type="Boolean"></aura:attribute>
-    <aura:attribute name="dashboardFilter" type="String"></aura:attribute>
-    <aura:attribute name="developerName" type="String" default="ICR_Results_Edit_with_Anaelle"></aura:attribute>
-    <aura:attribute name="viewmoretarget" type="String"></aura:attribute>
-    
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-
+<aura:component implements="flexipage:availableForAllPageTypes">
     <div class="slds-template__container customContainer">
         <!-- searchbar (top) -->
-        <c:globalSearchBar aura:id="searchbar" onfilterdashboard="{!c.handleFilterDashboard}" ></c:globalSearchBar>
-
+        <c:globalSearchBar aura:id="searchbar"></c:globalSearchBar>
         <div class="searchResultsLayout slds-grid ">
-            <!-- search results summary (left) -->
-            <div class="slds-col slds-size_small slds-m-top_none slds-m-right_small slds-theme_default slds-border_right slds-border_top slds-scrollable--y">
-                <c:globalSearchResultsFilter ontoggleresultsview="{!c.handleToggleResultViewEvent}">
-                </c:globalSearchResultsFilter>
-            </div>
             <!-- search results (right)-->
             <div class="slds-col searchResults slds-scrollable--y">
-                <aura:if isTrue="{! v.showDashboard }">
-                    <div class="resultDashboard">
-                        <wave:waveDashboard filter="{!v.dashboardFilter}" developerName="{! v.developerName }" height="800" />
-                    </div>
-                </aura:if>
-                <div class="{! v.showDashboard ? 'slds-hide' : '' }">
-                    <c:globalSearchResults onviewmore="{! c.handleViewMore }"></c:globalSearchResults>
-                </div>
+                <c:globalSearchResults></c:globalSearchResults>
+
             </div>
         </div>
     </div>
