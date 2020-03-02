@@ -5,7 +5,7 @@ public class SearchController {
         System.debug('hello from ctrl');
         system.debug('searchinput '+ searchInput);
         system.debug('objectAPIName '+ objectAPIName);
-        String searchQuery = 'FIND \'' + searchInput + '\' IN ALL FIELDS RETURNING ' + objectAPIName + '(Id,Name)';
+        String searchQuery = 'FIND \'' + searchInput + '\' IN ALL FIELDS RETURNING ' + objectAPIName + '(Id,Name) limit 20' ;
         List<List<sObject>> results = Search.query(searchQuery);
         List<sObject> searchList = results.get(0);
         system.debug('searchList  : ' + searchList);
