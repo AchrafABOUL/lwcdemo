@@ -26,6 +26,21 @@ export default class GlobalSearchResults extends LightningElement {
             label: 'Type',
             fieldName: 'Type',
             type: 'text'
+        },
+        {
+            label: 'Phone',
+            fieldName: 'Phone',
+            type: 'text'
+        },
+        {
+            label: 'Billing Country',
+            fieldName: 'BillingCountry',
+            type: 'text'
+        },
+        {
+            label: 'Website',
+            fieldName: 'Website',
+            type: 'text'
         }
     ];
     connectedCallback() {
