@@ -72,7 +72,6 @@ export default class GlobalSearchBar extends LightningElement {
                 fireEvent(this.pageRef, "gotErrorResponse", errorResponse);
             });
         })
-                
         
     }
     searchInSingleObject(searchInput, objectAPIName) {
@@ -89,6 +88,4 @@ export default class GlobalSearchBar extends LightningElement {
         console.log(searchText);
         this.processSearch(searchText);
     }
-
-
 }

@@ -1,12 +1,11 @@
 <template>
-  <div class="searchBarLayout slds-grid slds-grid--align-center slds-combobox-group ">
-
+  <div class="slds-grid slds-grid--align-center slds-combobox-group ">
     <div class="slds-col slds-size_6-of-12  slds-m-bottom_small">
       <div class="slds-form-element">
         <label class="slds-form-element__label" for="text-input-id-2"></label>
         <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
           <lightning-icon class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default"
-            icon-name="utility:search" size="x-small" alternative-text="Search address"></lightning-icon>
+            icon-name="utility:search" size="x-small"></lightning-icon>
           <input type="text" id="text-input-id-2" value={searchInput} onchange={searchInputChange}
             onkeyup={handleSearchKeyUp} placeholder="Advanced Search" class="slds-input noRadius"
             data-id="inputElement" />

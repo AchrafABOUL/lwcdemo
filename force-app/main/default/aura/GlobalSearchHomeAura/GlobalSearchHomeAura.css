@@ -1,25 +1,13 @@
 .THIS {
-    /*overflow: hidden !important;*/
     
 }
 .THIS .searchResultsLayout{
-    margin-left: -12px !important;
-    height: 100% !important;
+    margin-left: -12px ;
+    height: 100% ;
       
 }
 .THIS .searchResults{
-        width: 90% !important;
-}
-.THIS .resultDashboard{
-    margin-top:12px;
-}
-.THIS .customContainer{
-    height: 91%;
-    margin-top : -12px;
-}
-
-.THIS .customContainer{
-    padding: 5px; 
+        width: 90%;
 }
 .THIS .containerCard{
     min-height: 500px;

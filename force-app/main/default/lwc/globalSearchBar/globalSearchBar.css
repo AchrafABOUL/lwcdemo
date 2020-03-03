@@ -2,7 +2,6 @@
 .searchFiltersSection{
     position: absolute;
     width: inherit !important;
-    /* margin-top: -13px; */
 }
 .noRadius{
     border-radius: unset;

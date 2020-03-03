@@ -1,3 +1,6 @@
 .searchResultsGridHeader{
     background-color:rgb(243, 242, 242);;
 }
+.resultsLayout{
+    min-height: 300px;
+}
