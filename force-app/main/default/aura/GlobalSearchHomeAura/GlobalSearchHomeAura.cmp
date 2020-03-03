@@ -1,5 +1,5 @@
 <aura:component implements="flexipage:availableForAllPageTypes">
-    <lightning:card>
+    <lightning:card class="containerCard">
         <div class="slds-template__container slds-p-horizontal_small">
             <!-- searchbar (top) -->
             <c:globalSearchBar aura:id="searchbar"></c:globalSearchBar>

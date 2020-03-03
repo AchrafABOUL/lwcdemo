@@ -21,3 +21,6 @@
 .THIS .customContainer{
     padding: 5px; 
 }
+.THIS .containerCard{
+    min-height: 500px;
+}
