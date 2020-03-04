@@ -1,13 +1,16 @@
 <template>
-    <div class="resultsLayout slds-is-relative slds-card slds-m-around_small">
-        <div class="resultsItem slds-col slds-no-flex">
-            <h2 class="slds-m-bottom--xx-small">
-                <a class="slds-page-header__title slds-text-color--default slds-show--inline-block uiOutputURL"
-                    href="javascript:void(0);" dir="ltr" title="">Account</a>
-            </h2>
-        </div>
-        <lightning-datatable key-field="id" data={results} columns={columns} hide-checkbox-column>
-        </lightning-datatable>
+    <div class="resultsContainer slds-m-top_small">
+        <div class="slds-m-around_small">
+            <div class="slds-col slds-no-flex">
+                <h2 class="slds-m-bottom--xx-small">
+                    <a class="slds-page-header__title slds-text-color--default slds-show--inline-block uiOutputURL"
+                        href="javascript:void(0);" dir="ltr" title="">{currentObject} Results</a>
+                </h2>
+            </div>
+            <lightning-datatable key-field="id" data={results} columns={columns} hide-checkbox-column>
+            </lightning-datatable>
 
+        </div>
     </div>
+
 </template>

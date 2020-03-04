@@ -24,6 +24,7 @@ export default class GlobalSearchBar extends LightningElement {
     searchInput = "";
     objectsForSearch = ["Account", "Contact"];
     recentSearchText;
+    currentObject = "Account";
     @wire(getLastSearches)
     recentSearches;
     get getRecentSearches() {
@@ -43,6 +44,16 @@ export default class GlobalSearchBar extends LightningElement {
     }
     @wire(CurrentPageReference) pageRef;
 
+    connectedCallback() {
+        registerListener(
+            "changeObject",
+            (curObject) => {
+                this.currentObject = curObject;
+                console.log('This is the current object : ' + this.currentObject);
+            },
+            this
+        );
+    }
     searchInputChange(event) {
         this.searchInput = event.target.value;
     }
@@ -59,7 +70,7 @@ export default class GlobalSearchBar extends LightningElement {
             refreshApex(this.recentSearches);
         })
         .then(()=>{
-            this.searchInSingleObject(searchText, this.objectsForSearch[0])
+            this.searchInSingleObject(searchText, this.currentObject)
             .then(result => {
                 console.log('*****respooonse ');
                 console.log(result);
@@ -67,7 +78,7 @@ export default class GlobalSearchBar extends LightningElement {
             })
             .catch(error => {
                 const errorResponse = {
-                    title: this.objectsAPINamesMap[this.objectsForSearch[i]]
+                    title: this.currentObject
                 };
                 fireEvent(this.pageRef, "gotErrorResponse", errorResponse);
             });

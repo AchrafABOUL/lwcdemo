@@ -5,7 +5,17 @@ public class SearchController {
         System.debug('hello from ctrl');
         system.debug('searchinput '+ searchInput);
         system.debug('objectAPIName '+ objectAPIName);
-        String searchQuery = 'FIND \'' + searchInput + '\' IN ALL FIELDS RETURNING ' + objectAPIName + '(Id,Name) limit 20' ;
+        String searchQuery;
+        if(objectAPIName.equals('Account')){
+         searchQuery = 'FIND \'' + searchInput + '\' IN ALL FIELDS RETURNING ' + objectAPIName + '(Id,Name,Type,Phone,BillingCountry) limit 20' ;
+
+        }
+        else if(objectAPIName.equals('Contact')){
+             searchQuery = 'FIND \'' + searchInput + '\' IN ALL FIELDS RETURNING ' + objectAPIName + '(Id,LastName,Phone,Email) limit 20' ;
+        }
+        else if(objectAPIName.equals('Opportunity')){
+             searchQuery = 'FIND \'' + searchInput + '\' IN ALL FIELDS RETURNING ' + objectAPIName + '(Id,Name,Description,StageName,CloseDate) limit 20' ;
+        }
         List<List<sObject>> results = Search.query(searchQuery);
         List<sObject> searchList = results.get(0);
         system.debug('searchList  : ' + searchList);

@@ -1,14 +1,6 @@
 <aura:component implements="flexipage:availableForAllPageTypes">
-    <lightning:card>
-        <div class="slds-template__container slds-p-horizontal_small">
-            <!-- searchbar (top) -->
-            <c:globalSearchBar aura:id="searchbar"></c:globalSearchBar>
-            <div class="searchResultsLayout slds-grid ">
-                <!-- search results (right)-->
-                <div class="slds-col searchResults slds-scrollable--y">
-                    <c:globalSearchResults></c:globalSearchResults>
-                </div>
-            </div>
-        </div>
-    </lightning:card>
+    <!-- searchbar (top) -->
+    <c:globalSearchBar aura:id="searchbar"></c:globalSearchBar>
+    <!-- search results (right)-->
+        <c:globalSearchResults></c:globalSearchResults>
 </aura:component>
