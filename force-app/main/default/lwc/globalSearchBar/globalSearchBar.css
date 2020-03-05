@@ -4,7 +4,7 @@
     border-width: 2px;
     border-color : rebeccapurple;
     border-radius: 10px;
-    opacity: 1;
+    opacity: 0.9;
     background : white;
 }
 .noRadius{
