@@ -6,21 +6,23 @@ public class SearchController {
         system.debug('searchinput '+ searchInput);
         system.debug('objectAPIName '+ objectAPIName);
         String searchQuery;
+        searchQuery = 'FIND \'' + searchInput + '\' IN ALL FIELDS RETURNING ' + objectAPIName;
         if(objectAPIName.equals('Account')){
-         searchQuery = 'FIND \'' + searchInput + '\' IN ALL FIELDS RETURNING ' + objectAPIName + '(Id,Name,Type,Phone,BillingCountry) limit 20' ;
+          searchQuery +='(Id,Name,Type,Phone,BillingCountry) limit 10' ;
 
         }
         else if(objectAPIName.equals('Contact')){
-             searchQuery = 'FIND \'' + searchInput + '\' IN ALL FIELDS RETURNING ' + objectAPIName + '(Id,LastName,Phone,Email) limit 20' ;
+             searchQuery +='(Id,LastName,Phone,Email) limit 10' ;
         }
         else if(objectAPIName.equals('Opportunity')){
-             searchQuery = 'FIND \'' + searchInput + '\' IN ALL FIELDS RETURNING ' + objectAPIName + '(Id,Name,Description,StageName,CloseDate) limit 20' ;
+             searchQuery += '(Id,Name,Description,StageName,CloseDate) limit 10' ;
         }
         List<List<sObject>> results = Search.query(searchQuery);
         List<sObject> searchList = results.get(0);
         system.debug('searchList  : ' + searchList);
         return JSON.serialize(searchList);
     }
+
      @AuraEnabled(cacheable=true)
     public static List<String> getLastSearches(){
         List<String> recentSearches = new List<String>();
@@ -31,9 +33,9 @@ public class SearchController {
         for(SearchAction__c eachSearchAction : searchActionsList){
             recentSearches.add(eachSearchAction.SearchInput__c);
         }
-        system.debug('recentSearches  ' + recentSearches);
         return recentSearches;
     }
+    
     @AuraEnabled
     public static Boolean logSearchEntry(String searchInput){
         SearchAction__c searchEntry = new SearchAction__c(SearchInput__c = searchInput);

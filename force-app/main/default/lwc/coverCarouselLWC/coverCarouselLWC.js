@@ -6,8 +6,7 @@ import {
     CurrentPageReference
 } from 'lightning/navigation';
 import {
-    fireEvent,
-    registerListener
+    fireEvent
 } from 'c/pubsub';
 
 export default class CoverCarouselLWC extends LightningElement {

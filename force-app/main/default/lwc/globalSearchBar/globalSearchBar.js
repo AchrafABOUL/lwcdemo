@@ -16,7 +16,6 @@ import {
     fireEvent,
     registerListener
 } from 'c/pubsub';
-//import getIsSelfRegistrationEnabled from '@salesforce/apex/LightningLoginFormController.getIsSelfRegistrationEnabled';
 
 
 export default class GlobalSearchBar extends LightningElement {
@@ -29,18 +28,15 @@ export default class GlobalSearchBar extends LightningElement {
     recentSearches;
     get getRecentSearches() {
         var recentSearchesOptions = [];
-        if(this.recentSearches){
-            // eslint-disable-next-line guard-for-in
-            for(let i in this.recentSearches.data){
-                recentSearchesOptions.push(
-                    {
-                        label : this.recentSearches.data[i],
-                        value : this.recentSearches.data[i]
-                    }
-                )
+        if (this.recentSearches) {
+            for (let i in this.recentSearches.data) {
+                recentSearchesOptions.push({
+                    label: this.recentSearches.data[i],
+                    value: this.recentSearches.data[i]
+                })
             }
-        } 
-        return recentSearchesOptions; 
+        }
+        return recentSearchesOptions;
     }
     @wire(CurrentPageReference) pageRef;
 
@@ -49,7 +45,6 @@ export default class GlobalSearchBar extends LightningElement {
             "changeObject",
             (curObject) => {
                 this.currentObject = curObject;
-                console.log('This is the current object : ' + this.currentObject);
             },
             this
         );
@@ -64,26 +59,24 @@ export default class GlobalSearchBar extends LightningElement {
     }
     processSearch(searchText) {
         logSearchEntry({
-            searchInput : this.searchInput
-        })
-        .then(()=>{
-            refreshApex(this.recentSearches);
-        })
-        .then(()=>{
-            this.searchInSingleObject(searchText, this.currentObject)
-            .then(result => {
-                console.log('*****respooonse ');
-                console.log(result);
-                fireEvent(this.pageRef, "gotResponse", JSON.parse(result));
+                searchInput: this.searchInput
             })
-            .catch(error => {
-                const errorResponse = {
-                    title: this.currentObject
-                };
-                fireEvent(this.pageRef, "gotErrorResponse", errorResponse);
-            });
-        })
-        
+            .then(() => {
+                refreshApex(this.recentSearches);
+            })
+            .then(() => {
+                this.searchInSingleObject(searchText, this.currentObject)
+                    .then(result => {
+                        fireEvent(this.pageRef, "gotResponse", JSON.parse(result));
+                    })
+                    .catch(error => {
+                        const errorResponse = {
+                            title: this.currentObject
+                        };
+                        fireEvent(this.pageRef, "gotErrorResponse", errorResponse);
+                    });
+            })
+
     }
     searchInSingleObject(searchInput, objectAPIName) {
         return executeSearch({
@@ -91,12 +84,8 @@ export default class GlobalSearchBar extends LightningElement {
             objectAPIName: objectAPIName
         });
     }
-    handleRecentSearchClick(event){
-        console.log('event');
-        console.log(event);
-        console.log('searchtext');
+    handleRecentSearchClick(event) {
         let searchText = event.target.value;
-        console.log(searchText);
         this.processSearch(searchText);
     }
 }
